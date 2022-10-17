@@ -11,8 +11,8 @@ const bytesToSize = (bytes) => {
 
 const ProfileCard = ({ data }) => {
   return (
-    <div className="flex">
-      <img src={data.avatar_url} alt="Avatar" className="object-cover w-1/3" />
+    <div className="grid grid-cols-1 gap-4 p-4 bg-white rounded-lg shadow-lg md:grid-cols-2">
+      <img src={data.avatar_url} alt="Avatar" className="object-cover" />
       <div className="bg-slate-100 p-4">
         <h1 className="text-2xl font-bold">{data.name}</h1>
         <p className="text-gray-600">{data.bio}</p>
@@ -82,9 +82,12 @@ const RepoList = ({ repos_url }) => {
     });
   }, [repos_url]);
   return (
-    <ul className="m-5">
+    <div className="m-5 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {repos.map((repo) => (
-        <li key={repo.id} className="border-b border-gray-200 p-2">
+        <div
+          key={repo.id}
+          className="border border-gray-200 p-5 rounded bg-white"
+        >
           <div className="flex justify-between">
             <a
               href={repo.html_url}
@@ -106,9 +109,9 @@ const RepoList = ({ repos_url }) => {
               ></i>
             </p>
           </div>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 
@@ -122,13 +125,13 @@ function GithubProfile({ name }) {
   }, [name]);
   if (data) {
     return (
-      <>
+      <div className="container mx-auto bg-gray-100">
         <ProfileCard data={data} />
         <h1 className="text-2xl font-bold text-center mt-5">
           My Github Repositories
         </h1>
         <RepoList repos_url={data.repos_url} />
-      </>
+      </div>
     );
   }
   return null;
