@@ -1,17 +1,14 @@
-import React from 'react'
-import Header from '../components/Header'
-
-
+import React from "react";
+import GithubProfile from "../components/GithubProfile";
+import Header from "../components/Header";
 
 function App() {
   return (
     <>
       <Header />
-      <main>
-        This will be the portfolio page
-      </main>
+      <GithubProfile name="rex-arnab" />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
