@@ -6,7 +6,6 @@ const nextConfig = {
             hostname: 'avatars.githubusercontent.com',
         }],
     },
-    output: 'export',
 };
 
 export default nextConfig;
