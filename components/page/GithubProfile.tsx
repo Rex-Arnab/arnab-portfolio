@@ -7,14 +7,15 @@ import { bytesToSize } from "@/lib/utils";
 import { Profile } from "@/types/user";
 import { Repo } from "@/types/repo";
 
-const ProfileCard = ({ data }) => {
+const ProfileCard = ({ data }: { data: Profile }) => {
   return (
     <div className="grid grid-cols-1 gap-4 p-4 bg-white rounded-lg shadow-lg md:grid-cols-2">
       <div className="flex flex-col items-center justify-center">
         {/* Image with white border */}
         <div className="relative w-56 h-56 rounded-full border-4 border-white">
           <Image
-            src={data.avatar_url}
+            // src={data.avatar_url}
+            src="/profile.jpeg"
             alt="Profile Picture"
             layout="fill"
             className="rounded-full"
@@ -44,7 +45,7 @@ const ProfileCard = ({ data }) => {
         <p className="text-gray-600">{data.email}</p>
         <p className="text-gray-600">{data.blog}</p>
 
-        <div className="flex justify-between mt-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-4 w-full">
           <div className="text-center">
             <h2 className="text-lg font-bold">{data.public_repos}</h2>
             <p className="text-gray-600">Repos</p>
@@ -94,7 +95,7 @@ const ProfileCard = ({ data }) => {
 };
 
 const RepoCard = ({ repo }: { repo: Repo }) => {
-  const [isCopied, setIsCopied] = useState<Boolean>(false);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
   return (
     <div key={repo.id} className="border border-gray-200 p-5 rounded bg-white">
       <div className="flex justify-between">
